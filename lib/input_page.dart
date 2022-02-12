@@ -17,15 +17,7 @@ enum Gender {
 }
 
 class _InputPageState extends State<InputPage> {
-  Color maleCardColor = activeCardColor;
-  Color femaleCardColor = inactiveCardColor;
-
-  void updateColor({required Gender gender}) {
-    maleCardColor =
-        (gender == Gender.male) ? activeCardColor : inactiveCardColor;
-    femaleCardColor =
-        (gender == Gender.female) ? activeCardColor : inactiveCardColor;
-  }
+  Gender selectedGender = Gender.male;
 
   @override
   Widget build(BuildContext context) {
@@ -44,11 +36,13 @@ class _InputPageState extends State<InputPage> {
                   child: GestureDetector(
                     onTap: () => {
                       setState(() {
-                        updateColor(gender: Gender.male);
+                        selectedGender = Gender.male;
                       }),
                     },
                     child: ReusableCard(
-                      color: maleCardColor,
+                      color: (selectedGender == Gender.male)
+                          ? activeCardColor
+                          : inactiveCardColor,
                       cardChild: const IconContent(
                         icon: FontAwesomeIcons.mars,
                         label: 'MALE',
@@ -60,11 +54,13 @@ class _InputPageState extends State<InputPage> {
                   child: GestureDetector(
                     onTap: () => {
                       setState(() {
-                        updateColor(gender: Gender.female);
+                        selectedGender = Gender.female;
                       }),
                     },
                     child: ReusableCard(
-                      color: femaleCardColor,
+                      color: (selectedGender == Gender.female)
+                          ? activeCardColor
+                          : inactiveCardColor,
                       cardChild: const IconContent(
                         icon: FontAwesomeIcons.venus,
                         label: 'FEMALE',
