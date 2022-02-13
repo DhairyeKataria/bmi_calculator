@@ -1,8 +1,7 @@
 // ignore_for_file: use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
-
-const Color iconTextColor = Color(0xFF8D8E98);
+import 'constants.dart';
 
 class IconContent extends StatelessWidget {
   const IconContent({required this.icon, required this.label});
@@ -22,10 +21,7 @@ class IconContent extends StatelessWidget {
         const SizedBox(height: 15.0),
         Text(
           label,
-          style: const TextStyle(
-            fontSize: 18.0,
-            color: iconTextColor,
-          ),
+          style: labelTextStyle,
         ),
       ],
     );
