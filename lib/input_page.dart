@@ -18,6 +18,7 @@ enum Gender {
 
 class _InputPageState extends State<InputPage> {
   Gender selectedGender = Gender.male;
+  int height = 180;
 
   @override
   Widget build(BuildContext context) {
@@ -68,12 +69,51 @@ class _InputPageState extends State<InputPage> {
             ),
           ),
           Expanded(
-            child: ReusableCard(color: kActiveCardColor),
+            child: ReusableCard(
+              color: kActiveCardColor,
+              cardChild: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  const Text('HEIGHT', style: kLabelTextStyle),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline.alphabetic,
+                    children: [
+                      Text(height.toString(), style: kNumberTextStyle),
+                      const Text('cm', style: kLabelTextStyle),
+                    ],
+                  ),
+                  SliderTheme(
+                    data: SliderTheme.of(context).copyWith(
+                      activeTrackColor: const Color(0xFFEB1555),
+                      inactiveTrackColor: const Color(0xFF8D8E98),
+                      thumbColor: const Color(0xFFEB1555),
+                      overlayColor: const Color(0x29EB1555),
+                      overlayShape:
+                          const RoundSliderOverlayShape(overlayRadius: 30.0),
+                      thumbShape:
+                          const RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                    ),
+                    child: Slider(
+                      value: height.toDouble(),
+                      min: 120,
+                      max: 220,
+                      onChanged: (double newValue) {
+                        setState(() {
+                          height = newValue.round();
+                        });
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
           Expanded(
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
+              children: const <Widget>[
                 Expanded(
                   child: ReusableCard(color: kActiveCardColor),
                 ),
