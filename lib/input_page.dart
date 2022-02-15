@@ -144,7 +144,7 @@ class _InputPageState extends State<InputPage> {
                             RoundIconButton(
                               onPress: () {
                                 setState(() {
-                                  weight--;
+                                  if (weight > 0) weight--;
                                 });
                               },
                               icon: FontAwesomeIcons.minus,
@@ -152,7 +152,7 @@ class _InputPageState extends State<InputPage> {
                             RoundIconButton(
                               onPress: () {
                                 setState(() {
-                                  weight++;
+                                  if (weight < 200) weight++;
                                 });
                               },
                               icon: FontAwesomeIcons.plus,
