@@ -21,6 +21,7 @@ class _InputPageState extends State<InputPage> {
   Gender selectedGender = Gender.male;
   int height = 180;
   int weight = 20;
+  int age = 18;
 
   @override
   Widget build(BuildContext context) {
@@ -163,8 +164,52 @@ class _InputPageState extends State<InputPage> {
                     ),
                   ),
                 ),
-                const Expanded(
-                  child: ReusableCard(color: kActiveCardColor),
+                Expanded(
+                  child: ReusableCard(
+                    color: kActiveCardColor,
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        const Text('AGE', style: kLabelTextStyle),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.baseline,
+                          textBaseline: TextBaseline.alphabetic,
+                          children: [
+                            Text(
+                              age.toString(),
+                              style: kNumberTextStyle,
+                            ),
+                            const Text(
+                              'yrs',
+                              style: kLabelTextStyle,
+                            ),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            RoundIconButton(
+                              onPress: () {
+                                setState(() {
+                                  if (age > 0) age--;
+                                });
+                              },
+                              icon: FontAwesomeIcons.minus,
+                            ),
+                            RoundIconButton(
+                              onPress: () {
+                                setState(() {
+                                  if (age < 120) age++;
+                                });
+                              },
+                              icon: FontAwesomeIcons.plus,
+                            )
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
                 ),
               ],
             ),
