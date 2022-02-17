@@ -1,7 +1,7 @@
 // ignore_for_file: use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
-import 'constants.dart';
+import 'package:bmi_calculator/constants.dart';
 
 class BottomButton extends StatelessWidget {
   const BottomButton({required this.text, required this.onTap});

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'constants.dart';
-import 'reusable_card.dart';
-import 'icon_content.dart';
-import 'round_icon_button.dart';
+import 'package:bmi_calculator/Components/reusable_card.dart';
+import 'package:bmi_calculator/Components/icon_content.dart';
+import 'package:bmi_calculator/Components/round_icon_button.dart';
+import 'package:bmi_calculator/Components/bottom_button.dart';
+import 'package:bmi_calculator/constants.dart';
 import 'result_page.dart';
-import 'bottom_button.dart';
 
 class InputPage extends StatefulWidget {
   const InputPage({Key? key}) : super(key: key);
