@@ -5,6 +5,7 @@ import 'reusable_card.dart';
 import 'icon_content.dart';
 import 'round_icon_button.dart';
 import 'result_page.dart';
+import 'bottom_button.dart';
 
 class InputPage extends StatefulWidget {
   const InputPage({Key? key}) : super(key: key);
@@ -215,32 +216,19 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          GestureDetector(
+          BottomButton(
+            text: 'CALCULATE',
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) {
-                  return ResultPage();
-                }),
+                MaterialPageRoute(
+                  builder: (context) {
+                    return const ResultPage();
+                  },
+                ),
               );
             },
-            child: Container(
-              margin: const EdgeInsets.only(top: 10.0),
-              padding: const EdgeInsets.only(bottom: 10.0),
-              color: kBottomContainerColor,
-              height: kBottomContainerHeight,
-              width: double.infinity,
-              child: const Center(
-                child: Text(
-                  'CALCULATE',
-                  style: TextStyle(
-                    fontSize: 22.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
-          )
+          ),
         ],
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:bmi_calculator/constants.dart';
 import 'package:bmi_calculator/reusable_card.dart';
 import 'package:flutter/material.dart';
+import 'bottom_button.dart';
 
 class ResultPage extends StatelessWidget {
   const ResultPage({Key? key}) : super(key: key);
@@ -12,42 +13,46 @@ class ResultPage extends StatelessWidget {
         title: const Text('BMI CALCULATOR'),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const Text(
-            'Result',
-            style: TextStyle(
-              fontSize: 30,
-            ),
-          ),
-          const Expanded(
-            child: ReusableCard(
-              color: kActiveCardColor,
-              cardChild: Center(
-                child: Text('Your BMI is'),
-              ),
-            ),
-          ),
-          GestureDetector(
-            onTap: () {
-              Navigator.pop(context);
-            },
+          Expanded(
             child: Container(
-              margin: const EdgeInsets.only(top: 10.0),
-              padding: const EdgeInsets.only(bottom: 10.0),
-              color: kBottomContainerColor,
-              height: kBottomContainerHeight,
-              width: double.infinity,
-              child: const Center(
-                child: Text(
-                  'RE-CALCULATE',
-                  style: TextStyle(
-                    fontSize: 22.0,
-                    fontWeight: FontWeight.bold,
-                  ),
+              padding: const EdgeInsets.all(15.0),
+              alignment: Alignment.bottomLeft,
+              child: const Text(
+                'Your Result',
+                style: TextStyle(
+                  fontSize: 50.0,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
-          )
+          ),
+          Expanded(
+            flex: 5,
+            child: ReusableCard(
+              color: kActiveCardColor,
+              cardChild: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: const [
+                  Text('OVERWEIGHT', style: kResultTextStyle),
+                  Text('26.7', style: kBMITextStyle),
+                  Text(
+                    'You have a higher than normal body weight. Try to exercise more.',
+                    textAlign: TextAlign.center,
+                    style: kBodyTextStyle,
+                  ),
+                ],
+              ),
+            ),
+          ),
+          BottomButton(
+            text: 'RE-CALCULATE',
+            onTap: () {
+              Navigator.pop(context);
+            },
+          ),
         ],
       ),
     );
