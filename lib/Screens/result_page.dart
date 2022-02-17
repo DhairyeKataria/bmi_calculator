@@ -1,10 +1,19 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 import 'package:bmi_calculator/constants.dart';
 import 'package:bmi_calculator/Components/reusable_card.dart';
 import 'package:bmi_calculator/Components/bottom_button.dart';
 
 class ResultPage extends StatelessWidget {
-  const ResultPage({Key? key}) : super(key: key);
+  const ResultPage(
+      {required this.resultText,
+      required this.bmiText,
+      required this.interpretation});
+
+  final String resultText;
+  final String bmiText;
+  final String interpretation;
 
   @override
   Widget build(BuildContext context) {
@@ -35,11 +44,11 @@ class ResultPage extends StatelessWidget {
               color: kActiveCardColor,
               cardChild: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: const [
-                  Text('OVERWEIGHT', style: kResultTextStyle),
-                  Text('26.7', style: kBMITextStyle),
+                children: [
+                  Text(resultText.toUpperCase(), style: kResultTextStyle),
+                  Text(bmiText, style: kBMITextStyle),
                   Text(
-                    'You have a higher than normal body weight. Try to exercise more.',
+                    interpretation,
                     textAlign: TextAlign.center,
                     style: kBodyTextStyle,
                   ),
