@@ -23,7 +23,7 @@ enum Gender {
 class _InputPageState extends State<InputPage> {
   Gender selectedGender = Gender.male;
   int height = 180;
-  int weight = 20;
+  int weight = 40;
   int age = 18;
 
   @override
